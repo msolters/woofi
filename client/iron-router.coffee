@@ -1,7 +1,8 @@
+###
+#   Define Before Hooks
+###
 beforeHooks =
-  ###
   #   Used to limit access by logged in status
-  ###
   loginRequired: ->
     if !Meteor.user()?
       if Meteor.loggingIn() is true
@@ -10,21 +11,25 @@ beforeHooks =
         @render 'login'
     else
       @next()
-  ###
   #   Moves screen to top of page:
-  ###
   scrollUp: ->
     $('body,html').scrollTop(0)
     @next()
 
+
+###
+#   Define Router Map
+###
 Router.map ->
-  @route 'Home'
+  @route 'Home',
     path: '/'
     template: 'home'
-    waitOn: ->
     data: ->
 
 
+###
+#   Configure & Initialize Router
+###
 Router.configure
   layoutTemplate: 'master'
   loadingTemplate: 'loading'
