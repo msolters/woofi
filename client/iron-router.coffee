@@ -26,6 +26,13 @@ Router.map ->
     template: 'home'
     data: ->
 
+  @route 'Login',
+    path: '/login'
+    template: 'login'
+
+  @route 'Register',
+    path: '/register'
+    template: 'register'
 
 ###
 #   Configure & Initialize Router
@@ -36,4 +43,4 @@ Router.configure
   notFoundTemplate: 'notFound'
 
 Router.onBeforeAction 'loading'
-Router.onBeforeAction beforeHooks.loginRequired, {except: ['Home']}
+Router.onBeforeAction beforeHooks.loginRequired, {except: ['Home', 'Login', 'Register']}
