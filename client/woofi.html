@@ -1,5 +1,6 @@
 <template name="master">
   {{> navbarTop }}
+  {{> yield }}
 </template>
 
 <template name="loading">
@@ -7,9 +8,17 @@
 </template>
 
 <template name="notFound">
-
+  <div class="container">
+    <div class="row">
+      <h4>Sorry!  Whatever you're looking for, it's not here!</h4>
+    </div>
+  </div>
 </template>
 
 <template name="home">
-
+  {{#if currentUser}}
+    Hey, {{currentUser.profile.name}}!
+  {{else}}
+    Here we put a bunch of marketing shit, whatever that means.
+  {{/if}}
 </template>
