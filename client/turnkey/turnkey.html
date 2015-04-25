@@ -1,2 +1,65 @@
 <template name="login">
+  <div class="container">
+    <div class="row">
+      <h4 class="left-align">Login</h4>
+    </div>
+    <form id="turnkey-login">
+      <div class="input-field">
+        <i class="mdi-communication-email prefix"></i>
+        <input id="login-email" type="email" class="validate">
+        <label for="login-email">My Email</label>
+      </div>
+      <div class="input-field">
+        <i class="mdi-communication-vpn-key prefix"></i>
+        <input id="login-password" type="password" class="validate">
+        <label for="login-password">My Password</label>
+      </div>
+      <div class="row">
+        <button class="btn light-green waves-effect waves-light right" type="submit" name="action">Let's Go!
+          <i class="mdi-content-send right"></i>
+        </button>
+      </div>
+    </form>
+    <div class="row">
+      <a href="/register" class="right right-align">Don't have an account with WooFi yet?</a>
+    </div>
+  </div>
+</template>
+
+<template name="register">
+  <div class="container">
+    <div class="row">
+      <h4 class="left-align">Register</h4>
+    </div>
+    <form id="turnkey-register">
+      <div class="input-field">
+        <i class="mdi-action-account-circle prefix"></i>
+        <input id="register-name" type="text" class="validate">
+        <label for="register-name">My Name</label>
+      </div>
+      <div class="input-field">
+        <i class="mdi-communication-email prefix"></i>
+        <input id="register-email" type="email" class="validate">
+        <label for="register-email">My Email</label>
+      </div>
+      <div class="input-field">
+        <i class="mdi-communication-vpn-key prefix"></i>
+        <input id="login-password" type="password" class="validate">
+        <label for="login-password">My Password</label>
+      </div>
+      <div class="input-field">
+        <i class="mdi-communication-vpn-key prefix"></i>
+        <input id="login-password-confirm" type="password" class="validate">
+        <label for="login-password-confirm">Confirm Password</label>
+      </div>
+      <div class="row">
+        <button class="btn light-green waves-effect waves-light right" type="submit" name="action">Let's Go!
+          <i class="mdi-content-send right"></i>
+        </button>
+      </div>
+    </form>
+    <div class="row">
+      <a href="/login" class="right right-align">Already have an account?</a>
+    </div>
+  </div>
 </template>
