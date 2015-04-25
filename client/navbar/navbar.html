@@ -2,18 +2,33 @@
   <div class="navbar-fixed">
     <nav class="light-green">
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo">WooFi</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/login">Sign In</a></li>
-        </ul>
-        <ul id="slide-out" class="side-nav">
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+        {{#if currentUser}}
+          <!-- top navbar contents  -->
+          <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <a href="/" class="brand-logo">WooFi</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/login">Sign In</a></li>
+          </ul>
+          <!-- end top navbar contents  -->
+          <!-- side menu contents   -->
+          <ul id="slide-out" class="side-nav">
+            <li><a href="/login">Sign In</a></li>
+          </ul>
+          <!-- end side menu contents   -->
+        {{else}}
+          <!-- top navbar contents  -->
+          <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <a href="/" class="brand-logo">WooFi</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/login">Sign In</a></li>
+          </ul>
+          <!-- end top navbar contents  -->
+          <!-- side menu contents   -->
+          <ul id="slide-out" class="side-nav">
+            <li><a href="/login">Sign In</a></li>
+          </ul>
+          <!-- end side menu contents   -->
       </div>
-
-
     </nav>
   </div>
 </template>
