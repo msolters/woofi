@@ -1,0 +1,8 @@
+<template name="mass">
+  <span class="unit-wrapper mass">
+    {{#if value}}
+      {{convertMass value}}
+    {{/if}}
+    <a data-mass-toggle class="unit">{{currentUser.profile.units.mass}}</a>
+  </span>
+</template>
