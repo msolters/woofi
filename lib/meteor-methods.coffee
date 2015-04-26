@@ -71,6 +71,22 @@ Meteor.methods
   #################################################################
   #           UPDATE
   #################################################################
+  #   Update currently logged-in user by merging given _user object
+  updateUser: (_user) ->
+    _q =
+      _id: Meteor.userId()
+    try
+      Meteor.users.update(_q, {$set: _user})
+      return {
+        success: true
+        msg: "Your changes have been saved successfully."
+      }
+    catch e
+      return {
+        success: false
+        msg: "Sorry, those changes could not be applied.  Why don't you give it another shot?"
+      }
+  #   Update pet record, by merging given _pet object by _pet._id
   updatePet: (_pet) ->
     _pet.owner = Meteor.userId()
     _q =
