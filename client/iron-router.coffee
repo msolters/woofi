@@ -45,7 +45,7 @@ Router.map ->
 
   @route 'User Profile',
     path: '/profile'
-    template: 'profile'
+    template: 'user'
 
   @route 'Add Pet',
     path: '/pets/add'
