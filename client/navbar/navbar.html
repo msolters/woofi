@@ -19,6 +19,7 @@
     <div id="sidenav-menu" class="flex-column">
       {{#if currentUser}}
         <ul class="sidenav-options">
+          {{> sideNavPets }}
           <li><a data-action-logout>Sign Out</a></li>
         </ul>
         <ul class="sidenav-options">
@@ -34,5 +35,8 @@
 </template>
 
 <template name="sideNavPets">
-
+  {{#each pets}}
+    <li><a href="/{{_id}}">{{name}}</a></li>
+  {{/each}}
+  <li class="{{urlIs '/add'}}"><a href="/add">Add New Pet<i class="mdi-content-add-circle-outline right"></i></a></li>
 </template>
