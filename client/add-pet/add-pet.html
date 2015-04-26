@@ -8,7 +8,7 @@
     <form id="add-pet" class="z-depth-1">
       <div class="input-field">
         <i class="mdi-social-mood prefix"></i>
-        <input id="add-pet-name" type="text" class="validate">
+        <input id="add-pet-name" type="text" class="validate" autofocus>
         <label for="add-pet-name">Pet's Name</label>
       </div>
       <div class="input-field">
@@ -18,6 +18,13 @@
         </select>
         <label>Animal Type</label>
       </div>
+      <p class="range-field">
+        <label>Weight</label>
+        <div class="row">
+          {{> mass value=newPetMass }}
+        </div>
+        <input type="range" id="add-pet-mass" value="{{convertMassToPreference newPetMass}}" min="{{massExtrema 'min' newPetType}}" max="{{massExtrema 'max' newPetType}}" />
+      </p>
       <div class="row">
         <button class="btn woofi-btn waves-effect waves-light right" type="submit" name="action">Let's Go!
           <i class="mdi-content-send right"></i>

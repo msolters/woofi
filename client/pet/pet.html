@@ -27,6 +27,13 @@
       </select>
       <label>Animal Type</label>
     </div>
+    <p class="range-field">
+      <label>Weight</label>
+      <div class="row">
+        {{> mass value=petMass }}
+      </div>
+      <input type="range" id="pet-mass" value="{{convertMassToPreference pet.mass}}" min="{{massExtrema 'min' pet.type}}" max="{{massExtrema 'max' pet.type}}" />
+    </p>
   </form>
 </template>
 
