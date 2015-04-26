@@ -1,6 +1,9 @@
 ###
 #     Template.login
 ###
+Template.login.rendered = ->
+  $("input#login-email").focus()
+
 Template.login.events
   'submit form#turnkey-login': (event, template) ->
     _user =
@@ -17,6 +20,9 @@ Template.login.events
 ###
 #     Template.register
 ###
+Template.register.rendered = ->
+  $("input#register-name").focus()
+
 Template.register.events
   'submit form#turnkey-register': (event, template) ->
     _user =
