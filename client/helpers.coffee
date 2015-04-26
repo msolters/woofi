@@ -4,6 +4,8 @@
 Template.registerHelper "firstName", ->
   if Meteor.user()
     return Meteor.user().profile.name.split(' ')[0]
+Template.registerHelper "convertMassToPreference", (M) ->
+  return convertMassToPreference M
 
 ###
 #     Routing
