@@ -43,13 +43,28 @@ Router.map ->
     path: '/register'
     template: 'register'
 
-  @route 'Profile',
+  @route 'User Profile',
     path: '/profile'
     template: 'profile'
 
   @route 'Add Pet',
-    path: '/add'
+    path: '/pets/add'
     template: 'addPet'
+
+  @route 'Pet Profile',
+    path: '/pets/:petID'
+    template: 'petProfile'
+    waitOn: ->
+      Meteor.subscribe "Pets",
+        _id: @params.petID
+    data: ->
+      return unless @ready()
+      pet = Pets.findOne({_id: @params.petID})
+      if !pet
+        Materialize.toast "Uh oh!  That's not a valid pet URL.", 4000, "red"
+        @redirect '/'
+      context =
+        pet: pet
 
 ###
 #   Configure & Initialize Router

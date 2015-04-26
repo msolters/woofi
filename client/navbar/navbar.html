@@ -36,7 +36,7 @@
 
 <template name="sideNavPets">
   {{#each pets}}
-    <li><a href="/{{_id}}">{{name}}</a></li>
+    <li class="{{urlIs '/pets/' _id}}"><a href="/pets/{{_id}}">{{name}}</a></li>
   {{/each}}
-  <li class="{{urlIs '/add'}}"><a href="/add">Add New Pet<i class="mdi-content-add-circle-outline right"></i></a></li>
+  <li class="{{urlIs '/pets/add'}}"><a href="/pets/add">Add New Pet<i class="mdi-content-add-circle-outline right"></i></a></li>
 </template>
