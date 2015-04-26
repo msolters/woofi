@@ -3,6 +3,7 @@
 ###
 Template.navbar.events
   'click a[data-action-logout]': ->
+    Materialize.toast "Bye #{Meteor.user().profile.name.split(' ')[0]}, see you soon!"
     Meteor.logout()
 
 
