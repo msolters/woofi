@@ -9,5 +9,7 @@ Template.addPet.events
     _pet =
       name: template.find("#add-pet-name").value
       type: template.find("#add-pet-type").value
-    Meteor.call "createNewPet", _pet, (e, r) -> handleMethodReply e, r
+    Meteor.call "createNewPet", _pet, (e, r) ->
+      handleMethodReply e, r
+      Router.go "/pets/#{r.petID}" if r.success
     return false
