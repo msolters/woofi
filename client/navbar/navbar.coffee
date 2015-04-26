@@ -8,7 +8,7 @@ Template.navbar.rendered = ->
 
 Template.navbar.events
   'click a[data-action-logout]': ->
-    Materialize.toast "Bye #{Meteor.user().profile.name.split(' ')[0]}, see you soon!"
+    Materialize.toast "Bye #{Meteor.user().profile.name.split(' ')[0]}, see you soon!", 4000
     Meteor.logout()
 
 
