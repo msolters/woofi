@@ -14,6 +14,7 @@ Template.petProfile.rendered = ->
 Template.petProfile.events
   'keydown input#pet-name': (event, template) ->
     clearTimeout template.name if template.name?
+    return unless isInput event.which
     template.name = setTimeout =>
       new_name = event.target.value
       return if new_name.length is 0
