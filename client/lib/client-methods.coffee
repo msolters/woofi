@@ -27,10 +27,10 @@
 # Takes M in kilos to whatever the user's preferred unit is
 @convertMassToPreference = (M) ->
   if Meteor.user().profile.units.mass is "lb"
-    return M*2.20462  # convert kilos to pounds
-  return M # otherwise, return kilograms
+    return accounting.formatNumber M*2.20462, 2  # convert kilos to pounds
+  return accounting.formatNumber M, 2 # otherwise, return kilograms
 # Takes M in user's preferred unit to kilos
 @convertMassToKilos = (M) ->
   if Meteor.user().profile.units.mass is "lb"
-    return M/2.20462  # convert pounds to kilos
-  return M #otherwise, M is already in kilos
+    return accounting.formatNumber M/2.20462, 2  # convert pounds to kilos
+  return accounting.formatNumber M, 2 #otherwise, M is already in kilos

@@ -1,11 +1,6 @@
 ###
 #      Template.mass
 ###
-Template.mass.helpers
-  'convertMass': (M) ->
-    return unless M?
-    convertMassToPreference M
-
 Template.mass.events
   'click a[data-mass-toggle]': ->
     unitTriggers.mass.changed()
