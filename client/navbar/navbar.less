@@ -16,6 +16,7 @@
 /*  sidenav styles    */
 .side-nav {
   background-color: @woofiBlue;
+  max-width: 90%;
 }
 #sidenav-icon {
   height: 175px;
@@ -51,6 +52,17 @@
 .sidenav-options > li > a {
   color: #fff !important;
   text-transform: uppercase;
+}
+.drag-target {
+  top: 56px;
+  height: calc(~"100% - 56px");
+  min-width: 40px;
+}
+@media only screen and (min-width: 663px) {
+  .drag-taret {
+    top: 64px;
+    height: calc(~"100% - 64px");
+  }
 }
 
 /*  Padding for primary content   */

@@ -4,7 +4,7 @@
 Template.navbar.rendered = ->
   $(".button-collapse").sideNav
     edge: "left"
-    menuWidth: 220
+    menuWidth: 420
 
 ###
 #     Template.sideNav
