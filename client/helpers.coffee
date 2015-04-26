@@ -1,3 +1,13 @@
+###
+#     User & Preferences
+###
+Template.registerHelper "firstName", ->
+  if Meteor.user()
+    return Meteor.user().profile.name.split(' ')[0]
+
+###
+#     Routing
+###
 Template.registerHelper "urlIs", ->
   _url = ""
   if arguments.length >= 1
@@ -7,10 +17,9 @@ Template.registerHelper "urlIs", ->
       return "active"
   return ""
 
-Template.registerHelper "firstName", ->
-  if Meteor.user()
-    return Meteor.user().profile.name.split(' ')[0]
-
+###
+#     Forms & Input
+###
 Template.registerHelper "isActive", (val) ->
   if val?
     return "active"
@@ -24,3 +33,21 @@ Template.registerHelper "isValid", (val, email=false) ->
 Template.registerHelper "isActiveOption", (val, checkAgainst) ->
   if val is checkAgainst
     return "selected"
+#  Returns a reasonable min or max for a given pet.type
+Template.registerHelper "massExtrema", (minOrMax, petType) ->
+  # (1) First we get the requested value in kilograms:
+  switch petType
+    when "dog"
+      switch minOrMax
+        when "min"
+          val = 0
+        when "max"
+          val = 45
+    when "cat"
+      switch minOrMax
+        when "min"
+          val = 0
+        when "max"
+          val = 20
+  # (2) Next, we return it in the user's preferred unit
+  return convertMassToPreference val
