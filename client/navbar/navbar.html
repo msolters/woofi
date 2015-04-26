@@ -22,7 +22,7 @@
           <li><a data-action-logout>Sign Out</a></li>
         </ul>
         <ul class="sidenav-options">
-          <li><a href="/profile">My Account</a></li>
+          <li class="{{urlIs '/profile'}}"><a href="/profile">My Account</a></li>
         </ul>
       {{else}}
         <ul class="sidenav-options">
@@ -34,5 +34,5 @@
 </template>
 
 <template name="sideNavPets">
-  
+
 </template>

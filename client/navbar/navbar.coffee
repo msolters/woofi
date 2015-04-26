@@ -15,7 +15,15 @@ Template.navbar.events
 ###
 #     Template.sideNav
 ###
+Template.sideNav.helpers
+  urlIs: (_url) ->
+    if _url is Router.current().route.path @
+      return "active"
+    return ""
+
 Template.sideNav.events
   "click #slide-out a": ->
     if $(window).width() < 992
       $(".button-collapse").sideNav 'hide'
+  "click #sidenav-icon": ->
+    Router.go "/"

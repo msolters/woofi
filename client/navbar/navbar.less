@@ -24,6 +24,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  cursor: pointer;
 }
 #sidenav-icon > i {
   font-size: 100px;
@@ -43,7 +44,8 @@
   cursor: pointer;
   background-color: @mediumBlue;
 }
-.sidenav-options > li:hover {
+.sidenav-options > li:hover,
+.sidenav-options > li.active {
   background-color: @darkBlue;
 }
 .sidenav-options > li > a {
