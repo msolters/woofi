@@ -47,6 +47,10 @@ Router.map ->
     path: '/profile'
     template: 'profile'
 
+  @route 'Add Pet',
+    path: '/add'
+    template: 'addPet'
+
 ###
 #   Configure & Initialize Router
 ###
