@@ -11,6 +11,54 @@
   </main>
 </template>
 
+
+<template name="notFound">
+  <div class="container">
+    <div class="row">
+      <h4>Sorry!  Whatever you're looking for, it's not here!</h4>
+    </div>
+  </div>
+</template>
+
+<template name="home">
+  {{#if currentUser}}
+    <div class="container">
+      <div class="row">
+        <p class="flow-text">
+          Hi, {{currentUser.profile.name}}!  Welcome to WooFi, the pet feeder <span style="text-decoration: line-through;">from</span> of the future.
+        </p>
+        <p class="flow-text">
+          You can use the menu to the left to manage your pets and their diets!
+        </p>
+        <p class="flow-text hide-on-large-only">
+          To open, just click the <i class="mdi-navigation-menu small-nav-menu"></i> icon in the upper left corner of your screen, or swipe your finger in from the left (touchscreen only).
+        </p>
+      </div>
+    </div>
+  {{else}}
+    <div class="container">
+      <div class="row">
+        <h4>WooFi Pet Feeder</h4>
+      </div>
+      <div class="row">
+        <p class="flow-text">
+          WooFi is a smart internet enabled feeder to keep your pets healthy and happy <span style="text-decoration: line-through;">and make us millions of dollars</span>!
+        </p>
+        <p class="flow-text">
+          Just got here?  <a href="/register">Join the party!</a>
+        </p>
+        <p class="flow-text">
+          Already have an account?  <a href="/login">Come on in!</a>
+        </p>
+      </div>
+    </div>
+  {{/if}}
+</template>
+
+<template name="dropdownOption">
+  <option value="{{value}}" {{isActiveOption value checkAgainst}}>{{labelValue}}</option>
+</template>
+
 <template name="loading">
   <div class="container vertical-align center" style="padding: 30px;">
     <div class="preloader-wrapper big active">
@@ -55,51 +103,4 @@
       </div>
     </div>
   </div>
-</template>
-
-<template name="notFound">
-  <div class="container">
-    <div class="row">
-      <h4>Sorry!  Whatever you're looking for, it's not here!</h4>
-    </div>
-  </div>
-</template>
-
-<template name="home">
-  {{#if currentUser}}
-    <div class="container">
-      <div class="row">
-        <p class="flow-text">
-          Hi, {{currentUser.profile.name}}!  Welcome to WooFi, the pet feeder <span style="text-decoration: line-through;">from</span> of the future.
-        </p>
-        <p class="flow-text">
-          You can use the menu to the left to manage your pets and their diets!
-        </p>
-        <p class="flow-text">
-          What?  No menu?!  Just click the icon in the upper left corner of your screen, or swipe your finger in from the left (touchscreen only).
-        </p>
-      </div>
-    </div>
-  {{else}}
-    <div class="container">
-      <div class="row">
-        <h4>WooFi Pet Feeder</h4>
-      </div>
-      <div class="row">
-        <p class="flow-text">
-          WooFi is a smart internet enabled feeder to keep your pets healthy and happy <span style="text-decoration: line-through;">and make us millions of dollars</span>!
-        </p>
-        <p class="flow-text">
-          Already have an account?  <a href="/login">Well come on in!</a>
-        </p>
-        <p class="flow-text">
-          Just got here?  <a href="/register">Join the party!</a>
-        </p>
-      </div>
-    </div>
-  {{/if}}
-</template>
-
-<template name="dropdownOption">
-  <option value="{{value}}" {{isActiveOption value checkAgainst}}>{{labelValue}}</option>
 </template>
