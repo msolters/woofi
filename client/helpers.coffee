@@ -7,8 +7,11 @@ Template.registerHelper "urlIs", ->
       return "active"
   return ""
 
+Template.registerHelper "firstName", ->
+  if Meteor.user()
+    return Meteor.user().profile.name.split(' ')[0]
+
 Template.registerHelper "isActive", (val) ->
-  console.log val
   if val?
     return "active"
 Template.registerHelper "isValid", (val) ->
