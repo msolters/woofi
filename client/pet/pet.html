@@ -4,22 +4,32 @@
       <div class="col s12">
         <ul id="pet-tabs" class="tabs">
           <li class="tab col s6"><a class="active" href="#about">About {{pet.name}}</a></li>
-          <li class="tab col s6"><a href="#feeding">Feeding</a></li>
+          <li class="tab col s6"><a href="#diet">Diet</a></li>
         </ul>
       </div>
       <div id="about" class="col s12">{{> petProfile }}</div>
-      <div id="feeding" class="col s12">{{> petFeeding }}</div>
+      <div id="diet" class="col s12">{{> petDiet }}</div>
       </div>
     </div>
 </template>
 
 <template name="petProfile">
-  <div>
-    {{pet.name}}
-    {{pet.type}}
-  </div>
+  <form id="pet-about">
+    <div class="input-field">
+      <i class="mdi-social-mood prefix {{isActive pet.name}}"></i>
+      <input id="pet-name" type="text" class="validate {{isValid pet.name}} {{isActive pet.name}}" value="{{pet.name}}">
+      <label for="pet-name" class="{{isActive pet.name}}">Pet's Name</label>
+    </div>
+    <div class="input-field">
+      <select id="pet-type">
+        {{> dropdownOption value="dog" labelValue="Dog" checkAgainst=pet.type}}
+        {{> dropdownOption value="cat" labelValue="Cat" checkAgainst=pet.type}}
+      </select>
+      <label>Animal Type</label>
+    </div>
+  </form>
 </template>
 
-<template name="petFeeding">
+<template name="petDiet">
 
 </template>

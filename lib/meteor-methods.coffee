@@ -71,6 +71,22 @@ Meteor.methods
   #################################################################
   #           UPDATE
   #################################################################
+  updatePet: (_pet) ->
+    _pet.owner = Meteor.userId()
+    _q =
+      _id: _pet._id
+    delete _pet["_id"]
+    try
+      Pets.update(_q, {$set: _pet})
+      return {
+        success: true
+        msg: "Your changes have been saved successfully."
+      }
+    catch e
+      return {
+        success: false
+        msg: "Sorry, those changes could not be applied.  Why don't you give it another shot?"
+      }
   #################################################################
   #           END UPDATE
   #################################################################

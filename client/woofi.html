@@ -99,3 +99,7 @@
     </div>
   {{/if}}
 </template>
+
+<template name="dropdownOption">
+  <option value="{{value}}" {{isActiveOption value checkAgainst}}>{{labelValue}}</option>
+</template>

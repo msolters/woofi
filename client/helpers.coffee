@@ -6,3 +6,14 @@ Template.registerHelper "urlIs", ->
     if _url is Router.current().location.get().path
       return "active"
   return ""
+
+Template.registerHelper "isActive", (val) ->
+  console.log val
+  if val?
+    return "active"
+Template.registerHelper "isValid", (val) ->
+  if val?
+    return "valid"
+Template.registerHelper "isActiveOption", (val, checkAgainst) ->
+  if val is checkAgainst
+    return "selected"
