@@ -27,7 +27,9 @@
         </ul>
       {{else}}
         <ul class="sidenav-options">
-          <li><a href="/login">Sign In</a></li>
+          <li class="{{urlIs '/'}}"><a href="/">What is WooFi?</a></li>
+          <li class="{{urlIs '/register'}}"><a href="/register">Register</a></li>
+          <li class="{{urlIs '/login'}}"><a href="/login">Sign In</a></li>
         </ul>
       {{/if}}
     </div>

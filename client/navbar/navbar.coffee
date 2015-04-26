@@ -6,17 +6,15 @@ Template.navbar.rendered = ->
     edge: "left"
     menuWidth: 220
 
-Template.navbar.events
-  'click a[data-action-logout]': ->
-    Materialize.toast "Bye #{Meteor.user().profile.name.split(' ')[0]}, see you soon!", 4000
-    Meteor.logout()
-
-
 ###
 #     Template.sideNav
 ###
 Template.sideNav.events
-  "click #slide-out a": ->
+  'click a[data-action-logout]': ->
+    Materialize.toast "Bye #{Meteor.user().profile.name.split(' ')[0]}, see you soon!", 4000
+    Meteor.logout()
+    Router.go '/'
+  "click #slide-out a, click #sidenav-icon": ->
     if $(window).width() < 992
       $(".button-collapse").sideNav 'hide'
   "click #sidenav-icon": ->
