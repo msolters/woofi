@@ -16,22 +16,22 @@
           <option value="dog">Dog</option>
           <option value="cat">Cat</option>
         </select>
-        <label>Animal Type</label>
+        <label>Type</label>
       </div>
+      <label>Weight</label>
+      <div class="row">
+        {{> mass value=newPetMass }}
+      </div>
+      <p class="range-field">
+        <input type="range" id="add-pet-mass" value="{{convertMassToPreference newPetMass}}" min="{{massExtrema 'min' newPetType}}" max="{{massExtrema 'max' newPetType}}" />
+      </p>
       <div class="input-field">
         <select id="add-pet-gender">
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-        <label>Animal Gender</label>
+        <label>Gender</label>
       </div>
-      <p class="range-field">
-        <label>Weight</label>
-        <div class="row">
-          {{> mass value=newPetMass }}
-        </div>
-        <input type="range" id="add-pet-mass" value="{{convertMassToPreference newPetMass}}" min="{{massExtrema 'min' newPetType}}" max="{{massExtrema 'max' newPetType}}" />
-      </p>
       <div class="row">
         <button class="btn woofi-btn waves-effect waves-light right" type="submit" name="action">Let's Go!
           <i class="mdi-content-send right"></i>

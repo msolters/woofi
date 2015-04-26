@@ -26,15 +26,24 @@
           {{> dropdownOption value="dog" labelValue="Dog" checkAgainst=pet.type}}
           {{> dropdownOption value="cat" labelValue="Cat" checkAgainst=pet.type}}
         </select>
-        <label>Animal Type</label>
+        <label>Type</label>
       </div>
-      <p class="range-field">
+      <div class="row">
         <label>Weight</label>
         <div class="row">
           {{> mass value=petMass }}
         </div>
-        <input type="range" id="pet-mass" value="{{convertMassToPreference pet.mass}}" min="{{massExtrema 'min' pet.type}}" max="{{massExtrema 'max' pet.type}}" />
+      </div>
+      <p class="range-field">
+        <input type="range" id="pet-mass" value="{{convertMassToPreference petMass}}" min="{{massExtrema 'min' pet.type}}" max="{{massExtrema 'max' pet.type}}" />
       </p>
+      <div class="input-field">
+        <select id="pet-gender">
+          {{> dropdownOption value="male" labelValue="Male" checkAgainst=pet.gender}}
+          {{> dropdownOption value="female" labelValue="Female" checkAgainst=pet.gender}}
+        </select>
+        <label>Gender</label>
+      </div>
     </form>
   </div>
   <div id="delete-pet-panel" class="z-depth-1">
