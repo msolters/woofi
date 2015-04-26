@@ -67,8 +67,35 @@
 
 <template name="home">
   {{#if currentUser}}
-    Hey, {{currentUser.profile.name}}!
+    <div class="container">
+      <div class="row">
+        <p class="flow-text">
+          Hi, {{currentUser.profile.name}}!  Welcome to WooFi, the pet feeder <span style="text-decoration: line-through;">from</span> of the future.
+        </p>
+        <p class="flow-text">
+          You can use the menu to the left to manage your pets and their diets!
+        </p>
+        <p class="flow-text">
+          What?  No menu?!  Just click the icon in the upper left corner of your screen, or swipe your finger in from the left (touchscreen only).
+        </p>
+      </div>
+    </div>
   {{else}}
-    Here we put a bunch of marketing shit, whatever that means.
+    <div class="container">
+      <div class="row">
+        <h4>WooFi Pet Feeder</h4>
+      </div>
+      <div class="row">
+        <p class="flow-text">
+          WooFi is a smart internet enabled feeder to keep your pets healthy and happy <span style="text-decoration: line-through;">and make us millions of dollars</span>!
+        </p>
+        <p class="flow-text">
+          Already have an account?  <a href="/login">Well come on in!</a>
+        </p>
+        <p class="flow-text">
+          Just got here?  <a href="/register">Join the party!</a>
+        </p>
+      </div>
+    </div>
   {{/if}}
 </template>
