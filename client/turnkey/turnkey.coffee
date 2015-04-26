@@ -32,10 +32,11 @@ Template.register.events
       password_confirm: template.find("#register-password-confirm").value
     Meteor.call "createNewUser", _user, (e, r) ->
       handleMethodReply e, r
-      if r.success
-        Meteor.loginWithPassword _user.email, _user.password, (e, r) ->
-          if e?
-            Materialize.toast e, 4000, "red"
-          else
-            Router.go "/"
+      if !e?
+        if r.success
+          Meteor.loginWithPassword _user.email, _user.password, (e, r) ->
+            if e?
+              Materialize.toast e, 4000, "red"
+            else
+              Router.go "/"
     return false
