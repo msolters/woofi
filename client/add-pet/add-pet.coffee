@@ -6,7 +6,7 @@ Template.addPet.helpers
   newPetType: -> return Session.get "newPetType"
 
 Template.addPet.rendered = ->
-  $(@find('select')).material_select()
+  $('select').material_select()
   $("input#add-pet-name").focus()
   Session.set "newPetMass", "0"
   Session.set "newPetType", "dog"
@@ -21,6 +21,7 @@ Template.addPet.events
       name: template.find("#add-pet-name").value
       type: template.find("#add-pet-type").value
       mass: convertMassToKilos template.find("#add-pet-mass").value
+      gender: template.find("#add-pet-gender").value
     Meteor.call "createNewPet", _pet, (e, r) ->
       handleMethodReply e, r
       Router.go "/pets/#{r.petID}" if r.success
