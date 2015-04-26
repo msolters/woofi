@@ -11,6 +11,15 @@ beforeHooks =
         @render 'login'
     else
       @next()
+  #   Redirects logged in users to /
+  logoutRequired: ->
+    if Meteor.user()?
+      Router.go '/'
+    else
+      if Meteor.loggingIn()
+        @render 'loading'
+      else
+        @next()
   #   Moves screen to top of page:
   scrollUp: ->
     $('body,html').scrollTop(0)
@@ -43,4 +52,5 @@ Router.configure
   notFoundTemplate: 'notFound'
 
 Router.onBeforeAction 'loading'
+Router.onBeforeAction beforeHooks.logoutRequired, {only: ['Login', 'Register']}
 Router.onBeforeAction beforeHooks.loginRequired, {except: ['Home', 'Login', 'Register']}
