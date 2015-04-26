@@ -12,8 +12,9 @@ Template.petProfile.helpers
   petMass: -> return Session.get "#{@pet._id}Mass"
 
 Template.petProfile.rendered = ->
-  $(@find('select')).material_select()
-  Session.set "#{@data.pet._id}Mass", @data.pet.mass
+  $(@find('select')).material_select() # activate dropdown
+  Session.set "#{@data.pet._id}Mass", @data.pet.mass  # initialize session var storing pet's weight
+  $(@find('.modal-trigger')).leanModal() # initialize pet delete confirmation dialog
 
 Template.petProfile.events
   'keydown input#pet-name': (event, template) ->
@@ -41,10 +42,13 @@ Template.petProfile.events
       _id: template.data.pet._id
       type: event.target.value
     Meteor.call "updatePet", _pet, (e, r) -> handleMethodReply e, r
-  "input input#pet-mass": (event, template) ->
+  'input input#pet-mass': (event, template) ->
     Session.set "#{@pet._id}Mass", convertMassToKilos event.target.value
   'change input#pet-mass': (event, template) ->
     _pet =
       _id: template.data.pet._id
       mass: convertMassToKilos event.target.value
     Meteor.call "updatePet", _pet, (e, r) -> handleMethodReply e, r
+  'click button#delete-pet': (event, template) ->
+    $(template.find("button[data-target=pet-delete-dialog]")).closeModal()
+    Meteor.call "deletePet", template.data.pet._id, (e, r) -> handleMethodReply e, r
