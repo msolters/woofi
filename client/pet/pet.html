@@ -1,16 +1,16 @@
 <template name="pet">
   <div class="container">
     <div class="row">
-      <div class="col s12">
+      <div class="col s12 z-depth-2 tabs-header">
         <ul id="pet-tabs" class="tabs">
           <li class="tab col s6"><a class="active" href="#about">About {{pet.name}}</a></li>
           <li class="tab col s6"><a href="#diet">Diet</a></li>
         </ul>
       </div>
-      <div id="about" class="col s12">{{> petProfile }}</div>
-      <div id="diet" class="col s12">{{> petDiet }}</div>
-      </div>
+      <div id="about" class="col s12 z-depth-1">{{> petProfile }}</div>
+      <div id="diet" class="col s12 z-depth-1">{{> petDiet }}</div>
     </div>
+  </div>
 </template>
 
 <template name="petProfile">
