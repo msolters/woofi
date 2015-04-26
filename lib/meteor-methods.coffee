@@ -1,4 +1,7 @@
 Meteor.methods
+  #################################################################
+  #           CREATE
+  #################################################################
   ###
   #   Validate and create a new WooFi user account
   ###
@@ -37,3 +40,23 @@ Meteor.methods
       success: true
       msg: "Nice work, bone daddy!  Welcome aboard!"
     }
+  createNewPet: (_pet) ->
+    # (1) Validate pet name
+    if _pet.name.length is 0
+      return {
+        success: false
+        msg: "Please enter your pet's name."
+      }
+    # (2) Validate pet type
+    #if _pet.type
+    _pet.owner = Meteor.userId()
+    petID = Pets.insert(_pet)
+    return {
+      success: true
+      msg: "Woohoo! #{_pet.name} has been added to the WooFi system :)"
+      petID: petID
+    }
+
+  #################################################################
+  #           END CREATE
+  #################################################################
