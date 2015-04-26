@@ -10,11 +10,16 @@
   flex-direction: row;
 }
 .container .row {
-  margin: 0;
+  margin: 0 auto;
 }
 
 .hover-darken:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*  Toast   */
+.toast {
+  cursor: pointer;
 }
 
 /*  Forms & Inputs  */
@@ -26,6 +31,17 @@ form {
 }
 .dropdown-content {
   z-index: 2;
+}
+.woofi-btn {
+  background-color: @woofiBlue !important;
+}
+.woofi-btn:hover {
+  background-color: @darkBlue !important;
+}
+.waves-effect.waves-woofi .waves-ripple {
+ /* The alpha value allows the text and background color
+ of the button to still show through. */
+  background-color: rgba(51, 87, 128, 0.65);
 }
 
 /*  Tabs    */
