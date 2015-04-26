@@ -53,7 +53,7 @@ Router.map ->
 
   @route 'Pet Profile',
     path: '/pets/:petID'
-    template: 'petProfile'
+    template: 'pet'
     waitOn: ->
       Meteor.subscribe "Pets",
         _id: @params.petID
