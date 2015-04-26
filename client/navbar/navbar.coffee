@@ -13,9 +13,9 @@ Template.navbar.events
 
 
 ###
-#     Template.navbarSide
+#     Template.sideNav
 ###
-Template.navbarSide.events
+Template.sideNav.events
   "click #slide-out a": ->
     if $(window).width() < 992
       $(".button-collapse").sideNav 'hide'
