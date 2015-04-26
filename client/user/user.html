@@ -3,10 +3,12 @@
     <div class="row">
       <div class="col s12 z-depth-2 tabs-header">
         <ul id="user-tabs" class="tabs">
-          <li class="tab col s12"><a class="active" href="#about">About Me</a></li>
+          <li class="tab col s6"><a class="active" href="#about">About Me <i class="mdi-action-account-circle"></i></a></li>
+          <li class="tab col s6"><a href="#preferences">Preferences <i class="mdi-action-settings"></i></a></li>
         </ul>
       </div>
       <div id="about" class="col s12 z-depth-1">{{> userProfile }}</div>
+      <div id="preferences" class="col s12 z-depth-1">{{> userPreferences }}</div>
     </div>
   </div>
 </template>
@@ -34,4 +36,14 @@
       <label for="user-address" class="{{isActive currentUser.profile.address}}">Address</label>
     </div>
   </form>
+</template>
+
+<template name="userPreferences">
+  <ul class="collection">
+    <li class="collection-item">
+      <div class="row">
+        I prefer mass in {{> mass }}
+      </div>
+    </li>
+  </ul>
 </template>

@@ -37,7 +37,7 @@ Meteor.methods
       profile:
         name: _user.name
         units:
-          mass: "lbs" # pounds is default unit of mass
+          mass: "kg" # pounds is default unit of mass
     return {
       success: true
       msg: "Nice work, bone daddy!  Welcome aboard!"
