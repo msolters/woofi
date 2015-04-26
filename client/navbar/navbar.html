@@ -1,35 +1,35 @@
-<template name="navbarTop">
+<template name="navbar">
   <div class="navbar-fixed">
-    <nav class="light-green">
+    <nav id="navbar-top">
       <div class="nav-wrapper">
-        {{#if currentUser}}
-          <!-- top navbar contents  -->
-          <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-          <a href="/" class="brand-logo">WooFi</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a data-action-logout>Sign Out</a></li>
-          </ul>
-          <!-- end top navbar contents  -->
-          <!-- side menu contents   -->
-          <ul id="slide-out" class="side-nav">
-            <li><a data-action-logout>Sign Out</a></li>
-          </ul>
-          <!-- end side menu contents   -->
-        {{else}}
-          <!-- top navbar contents  -->
-          <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-          <a href="/" class="brand-logo">WooFi</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="/login">Sign In</a></li>
-          </ul>
-          <!-- end top navbar contents  -->
-          <!-- side menu contents   -->
-          <ul id="slide-out" class="side-nav">
-            <li><a href="/login">Sign In</a></li>
-          </ul>
-          <!-- end side menu contents   -->
-        {{/if}}
+        {{> navbarTop }}
+        {{> navbarSide }}
       </div>
     </nav>
   </div>
+</template>
+
+<template name="navbarTop">
+  <a href="/" class="brand-logo">WooFi</a>
+  {{#if currentUser}}
+    <a href="#" data-activates="slide-out" class="button-collapse hover-darken"><i class="mdi-navigation-menu"></i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a data-action-logout>Sign Out</a></li>
+    </ul>
+  {{else}}
+    <a href="#" data-activates="slide-out" class="button-collapse hover-darken"><i class="mdi-navigation-menu"></i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/login">Sign In</a></li>
+    </ul>
+  {{/if}}
+</template>
+
+<template name="navbarSide">
+  <ul id="slide-out" class="side-nav fixed">
+    {{#if currentUser}}
+      <li><a data-action-logout>Sign Out</a></li>
+    {{else}}
+      <li><a href="/login">Sign In</a></li>
+    {{/if}}
+  </ul>
 </template>
