@@ -15,7 +15,7 @@ Template.registerHelper "isActive", (val) ->
   if val?
     return "active"
 Template.registerHelper "isValid", (val, email=false) ->
-  if email
+  if email is true
     if validateEmail.test val
       return "valid"
   else
