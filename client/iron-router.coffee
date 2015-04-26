@@ -43,6 +43,10 @@ Router.map ->
     path: '/register'
     template: 'register'
 
+  @route 'Profile',
+    path: '/profile'
+    template: 'profile'
+
 ###
 #   Configure & Initialize Router
 ###
