@@ -61,8 +61,7 @@ Router.map ->
       return unless @ready()
       pet = Pets.findOne({_id: @params.petID})
       if !pet
-        Materialize.toast "Uh oh!  That's not a valid pet URL.", 4000, "red"
-        @redirect '/'
+        @redirect '/' # silently redirect user to home if URL is bad -- this should never happen unless they tried to type it themselves
       context =
         pet: pet
 
