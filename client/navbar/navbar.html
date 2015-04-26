@@ -2,34 +2,33 @@
   <div class="navbar-fixed">
     <nav id="navbar-top">
       <div class="nav-wrapper">
-        {{> navbarTop }}
+        <a href="/" class="brand-logo">WooFi</a>
+        <a href="#" data-activates="slide-out" class="button-collapse hover-darken"><i class="mdi-navigation-menu"></i></a>
         {{> navbarSide }}
       </div>
     </nav>
   </div>
 </template>
 
-<template name="navbarTop">
-  <a href="/" class="brand-logo">WooFi</a>
-  {{#if currentUser}}
-    <a href="#" data-activates="slide-out" class="button-collapse hover-darken"><i class="mdi-navigation-menu"></i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a data-action-logout>Sign Out</a></li>
-    </ul>
-  {{else}}
-    <a href="#" data-activates="slide-out" class="button-collapse hover-darken"><i class="mdi-navigation-menu"></i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="/login">Sign In</a></li>
-    </ul>
-  {{/if}}
-</template>
-
 <template name="navbarSide">
-  <ul id="slide-out" class="side-nav fixed">
-    {{#if currentUser}}
-      <li><a data-action-logout>Sign Out</a></li>
-    {{else}}
-      <li><a href="/login">Sign In</a></li>
-    {{/if}}
-  </ul>
+  <div id="slide-out" class="side-nav fixed">
+    <div id="sidenav-icon">
+      <i class="mdi-action-help"></i>
+      <div>Vet Innovations</div>
+    </div>
+    <div id="sidenav-menu" class="flex-column">
+      {{#if currentUser}}
+        <ul class="sidenav-options">
+          <li><a data-action-logout>Sign Out</a></li>
+        </ul>
+        <ul class="sidenav-options">
+          <li><a href="/profile">My Account</a></li>
+        </ul>
+      {{else}}
+        <ul class="sidenav-options">
+          <li><a href="/login">Sign In</a></li>
+        </ul>
+      {{/if}}
+    </div>
+  </div>
 </template>

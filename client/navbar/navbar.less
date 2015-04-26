@@ -17,8 +17,38 @@
 .side-nav {
   background-color: @woofiBlue;
 }
-#slide-out > li {
+#sidenav-icon {
+  height: 175px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+#sidenav-icon > i {
+  font-size: 100px;
+  line-height: 1em;
+  height: 1em;
+}
+#sidenav-icon > div {
+  line-height: 1em;
+}
+#sidenav-menu {
+  min-height: calc(~"100% - 175px");
+  position: relative;
+  align-content: space-between;
+  justify-content: space-between;
+}
+.sidenav-options > li {
   cursor: pointer;
+  background-color: @mediumBlue;
+}
+.sidenav-options > li:hover {
+  background-color: @darkBlue;
+}
+.sidenav-options > li > a {
+  color: #fff !important;
+  text-transform: uppercase;
 }
 
 /*  Padding for primary content   */

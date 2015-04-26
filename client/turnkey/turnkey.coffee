@@ -9,6 +9,8 @@ Template.login.events
     Meteor.loginWithPassword _user.user, _user.password, (e, r) ->
       if e?
         Materialize.toast e, 4000, "red"
+      else
+        Materialize.toast "Welcome back, #{Meteor.user().profile.name.split(' ')[0]}!", 4000
     return false
 
 
