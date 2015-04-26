@@ -13,4 +13,11 @@ Template.navbarTop.rendered = ->
   $(".button-collapse").sideNav
     edge: "left"
     menuWidth: 220
-    closeOnClick: true
+
+###
+#     Template.navbarSide
+###
+Template.navbarSide.events
+  "click #slide-out a": ->
+    if $(window).width() < 992
+      $(".button-collapse").sideNav 'hide'
