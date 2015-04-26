@@ -1,5 +1,28 @@
 <template name="addPet">
   <div class="container">
-    Let's create a new pet
+    <div class="row">
+      <h4>
+        Tell us about your furry friend!
+      </h4>
+    </div>
+    <form id="add-pet">
+      <div class="input-field">
+        <i class="mdi-social-mood prefix"></i>
+        <input id="add-pet-name" type="text" class="validate">
+        <label for="add-pet-name">Pet's Name</label>
+      </div>
+      <div class="input-field">
+        <select id="add-pet-type">
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+        </select>
+        <label>Animal Type</label>
+      </div>
+      <div class="row">
+        <button class="btn waves-effect waves-light right" type="submit" name="action">Let's Go!
+          <i class="mdi-content-send right"></i>
+        </button>
+      </div>
+    </form>
   </div>
 </template>
