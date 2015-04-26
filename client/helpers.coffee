@@ -14,9 +14,13 @@ Template.registerHelper "firstName", ->
 Template.registerHelper "isActive", (val) ->
   if val?
     return "active"
-Template.registerHelper "isValid", (val) ->
-  if val?
-    return "valid"
+Template.registerHelper "isValid", (val, email=false) ->
+  if email
+    if validateEmail.test val
+      return "valid"
+  else
+    if val?
+      return "valid"
 Template.registerHelper "isActiveOption", (val, checkAgainst) ->
   if val is checkAgainst
     return "selected"
