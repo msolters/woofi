@@ -22,14 +22,14 @@
           {{> sideNavPets }}
         </ul>
         <ul class="sidenav-options">
-          <li class="{{urlIs '/profile'}}"><a href="/profile">My Account</a></li>
-          <li><a data-action-logout>Sign Out</a></li>
+          <li class="{{urlIs '/profile'}}"><a href="/profile" class="truncate">My Account</a></li>
+          <li><a data-action-logout class="truncate">Sign Out</a></li>
         </ul>
       {{else}}
         <ul class="sidenav-options">
-          <li class="{{urlIs '/'}}"><a href="/">What is WooFi?</a></li>
-          <li class="{{urlIs '/register'}}"><a href="/register">Register</a></li>
-          <li class="{{urlIs '/login'}}"><a href="/login">Sign In</a></li>
+          <li class="{{urlIs '/'}}"><a href="/" class="truncate">What is WooFi?</a></li>
+          <li class="{{urlIs '/register'}}"><a href="/register" class="truncate">Register</a></li>
+          <li class="{{urlIs '/login'}}"><a href="/login" class="truncate">Sign In</a></li>
         </ul>
       {{/if}}
     </div>
@@ -38,7 +38,7 @@
 
 <template name="sideNavPets">
   {{#each pets}}
-    <li class="{{urlIs '/pets/' _id}}"><a href="/pets/{{_id}}">{{name}}</a></li>
+    <li class="{{urlIs '/pets/' _id}}"><a href="/pets/{{_id}}" class="truncate">{{name}}</a></li>
   {{/each}}
-  <li class="{{urlIs '/pets/add'}}"><a href="/pets/add">Add New Pet<i class="mdi-content-add-circle-outline right"></i></a></li>
+  <li class="{{urlIs '/pets/add'}} truncate"><a href="/pets/add">Add New Pet<i class="mdi-content-add-circle-outline right"></i></a></li>
 </template>
