@@ -5,14 +5,12 @@
 # but you can also edit it by hand.
 
 meteor-platform
-insecure
 coffeescript
 materialize:materialize
-chriswessels:hammer
-velocityjs:velocityjs
-mrt:moment
-iron:router
-accounts-ui
+grove:less
+kadira:flow-router
+meteorhacks:fast-render
+alanning:roles
+useraccounts:materialize
+useraccounts:flow-routing
 accounts-password
-lauricio:less-autoprefixer
-lepozepo:accounting
