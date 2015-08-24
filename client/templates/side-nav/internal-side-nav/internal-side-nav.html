@@ -1,9 +1,13 @@
 <template name="internalSideNav">
   <nav class="teal">
     <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+    <a href="#" class="brand-logo">{{routeContext}}</a>
     <div id="slide-out" class="side-nav flex flex-column flex-between">
       <div>
         <ul>
+          <li>
+            <a href="/home"><i class="material-icons">home</i>Home</a>
+          </li>
           {{#each feeders}}
             <li>
               <a href="/feeder/{{feeder_id}}">{{name}}</a>
