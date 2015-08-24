@@ -21,6 +21,12 @@ Template.internalSideNav.helpers
         feeder.name if feeder?
       else
         _routeName
+  feederIsSelected: (_feeder_id) ->
+    if FlowRouter.getRouteName() is "Feeder Console"
+      feeder_id = FlowRouter.getParam 'feeder_id'
+      if feeder_id is _feeder_id
+        return true
+    return false
 
 Template.internalSideNav.events
   'click .side-nav a': ->

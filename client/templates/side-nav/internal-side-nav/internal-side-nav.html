@@ -5,11 +5,11 @@
     <div id="slide-out" class="side-nav flex flex-column flex-between">
       <div>
         <ul>
-          <li>
+          <li class="{{#if routeIs 'Home'}}selected{{/if}}">
             <a href="/home"><i class="material-icons">home</i>Home</a>
           </li>
           {{#each feeders}}
-            <li>
+            <li class="{{#if feederIsSelected feeder_id}}selected{{/if}}">
               <a href="/feeder/{{feeder_id}}">{{name}}</a>
             </li>
           {{/each}}
