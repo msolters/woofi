@@ -1,12 +1,17 @@
 ###
 #     Template.internalSideNav
 ###
+Template.internalSideNav.created = ->
+  @subscribe "Feeders"
+
 Template.internalSideNav.rendered = ->
   @sideNavTrigger = $ @find '.button-collapse'
     .sideNav()
 
-###
+Template.internalSideNav.helpers
+  feeders: ->
+    Feeders.find().fetch()
+
 Template.internalSideNav.events
-  'click .side-nav a': (event, template) ->
-    template.sideNavTrigger.sideNav 'hide'
-###
+  'click a[data-sign-out]': ->
+    AccountsTemplates.logout()

@@ -8,9 +8,21 @@ FlowRouter.route '/',
 FlowRouter.route '/home',
   name: "Home"
   triggersEnter: [AccountsTemplates.ensureSignedIn]
+  subscriptions: (params, qParams) ->
+    @register "Feeders", Meteor.subscribe "Feeders"
   action: (params, qParams) ->
     BlazeLayout.render 'mainLayout',
       main: 'home'
+      nav: 'internalSideNav'
+
+FlowRouter.route '/feeder/:feeder_id',
+  name: "Feeder Console"
+  triggersEnter: [AccountsTemplates.ensureSignedIn]
+  subscriptions: (params, qParams) ->
+    @register "Feeders", Meteor.subscribe "Feeders"
+  action: (params, qParams) ->
+    BlazeLayout.render 'mainLayout',
+      main: 'feederConsole'
       nav: 'internalSideNav'
 
 FlowRouter.notFound =
