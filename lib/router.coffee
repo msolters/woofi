@@ -17,3 +17,4 @@ FlowRouter.notFound =
   action: ->
     BlazeLayout.render 'mainLayout',
       main: "pageNotFound"
+      nav: null
