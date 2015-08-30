@@ -1,4 +1,5 @@
 Template.registerHelper 'routeIs', (_route) ->
+  console.log FlowRouter.getRouteName()
   return true if _route is FlowRouter.getRouteName()
   return false
 

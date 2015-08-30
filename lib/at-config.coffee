@@ -54,7 +54,6 @@ AccountsTemplates.configure
         Materialize.toast "Welcome back #{getNamePart(0)}!", 5000, "green"
       when 'signUp'
         Materialize.toast "Welcome, #{getNamePart(0)}!", 5000, "green"
-    FlowRouter.redirect '/home'
   #preSignUpHook: myPreSubmitFunc,
 
   # Texts
