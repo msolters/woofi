@@ -39,7 +39,20 @@ Meteor.methods
 
   deleteFeeder: ( _sn ) ->
     try
-
+      feeder_q =
+        owner: Meteor.userId()
+        sn: _sn
+      removeFeeder = Feeders.remove feeder_q
+      if removeFeeder
+        return {
+          success: true
+          msg: "Feeder successfully removed."
+        }
+      else
+        return {
+          success: false
+          msg: "You have insufficient privileges to remove this Feeder."
+        }
     catch error
       return {
         success: false
