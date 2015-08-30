@@ -47,9 +47,9 @@ AccountsTemplates.configure
     throw err if err
     switch state
       when 'signIn'
-        Materialize.toast "Welcome back!", 5000
+        Materialize.toast "Welcome back #{getNamePart(0)}!", 5000
       when 'signUp'
-        Materialize.toast "Welcome!", 5000
+        Materialize.toast "Welcome, #{getNamePart(0)}!", 5000
     FlowRouter.redirect '/home'
   #preSignUpHook: myPreSubmitFunc,
 
@@ -62,6 +62,17 @@ AccountsTemplates.configure
       "meteor-developer": "fa fa-rocket"
     title:
       forgotPwd: "Recover Your Password"
+
+
+#
+# Custom Registration Fields
+#
+AccountsTemplates.addField
+    _id: 'name'
+    type: 'text'
+    displayName: "Full Name"
+    required: true
+
 
 #
 # AccountsTemplate Routes
