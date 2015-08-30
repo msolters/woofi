@@ -1,10 +1,10 @@
 <template name="mainLayout">
-  <div class="content full-height">
+  <main>
     {{> Template.dynamic template=nav}}
-    <div class="container">
+    <div class="content full-height">
       {{> Template.dynamic template=main}}
       {{> controls }}
       {{> tooltips }}
     </div>
-  </div>
+  </main>
 </template>

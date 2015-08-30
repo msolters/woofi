@@ -3,7 +3,7 @@ FlowRouter.route '/',
   action: (params, qParams) ->
     BlazeLayout.render 'mainLayout',
       main: 'welcome'
-      nav: null
+      nav: 'externalSideNav'
 
 FlowRouter.route '/home',
   name: "Home"

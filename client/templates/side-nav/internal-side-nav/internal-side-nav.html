@@ -2,7 +2,7 @@
   <nav class="teal">
     <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
     <a href="#" class="brand-logo">{{routeContext}}</a>
-    <div id="slide-out" class="side-nav flex flex-column flex-between">
+    <div id="slide-out" class="side-nav flex flex-column flex-between z-depth-2">
       <div>
         <ul>
           <li class="{{#if routeIs 'Home'}}selected{{/if}}">
@@ -28,7 +28,7 @@
         </ul>
       </div>
       <div>
-        <a data-sign-out class="waves-effect waves-light btn blue">Sign Out</a>
+        <a data-sign-out class="waves-effect waves-light btn blue white-text">Sign Out</a>
       </div>
     </div>
   </nav>

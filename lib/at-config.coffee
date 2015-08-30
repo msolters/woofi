@@ -1,6 +1,8 @@
 AccountsTemplates.configure
   defaultLayout: 'mainLayout'
-  defaultLayoutRegions: {}
+  defaultLayoutRegions: {
+    nav: 'externalSideNav'
+  }
   defaultContentRegion: 'main'
 
   # Behavior
@@ -67,11 +69,17 @@ AccountsTemplates.configure
 #
 # Custom Registration Fields
 #
+email = AccountsTemplates.removeField 'email'
+pwd = AccountsTemplates.removeField 'password'
+
 AccountsTemplates.addField
     _id: 'name'
     type: 'text'
     displayName: "Full Name"
     required: true
+
+AccountsTemplates.addField email
+AccountsTemplates.addField pwd
 
 
 #

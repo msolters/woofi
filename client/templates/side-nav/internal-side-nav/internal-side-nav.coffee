@@ -11,16 +11,6 @@ Template.internalSideNav.rendered = ->
 Template.internalSideNav.helpers
   feeders: ->
     Feeders.find().fetch()
-  routeContext: ->
-    _routeName = FlowRouter.getRouteName()
-    switch _routeName
-      when "Feeder Console"
-        feeder_q =
-          sn: FlowRouter.getParam 'sn'
-        feeder = Feeders.findOne feeder_q
-        feeder.name if feeder?
-      else
-        _routeName
   feederIsSelected: (_sn) ->
     if FlowRouter.getRouteName() is "Feeder Console"
       sn = FlowRouter.getParam 'sn'
