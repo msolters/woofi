@@ -6,18 +6,23 @@
       <div>
         <ul>
           <li class="{{#if routeIs 'Home'}}selected{{/if}}">
-            <a href="/home">
-              <div class="valign-wrapper flex flex-row">
-                <i class="material-icons">home</i>
-                <div>
-                  Home
-                </div>
+            <a href="/home" class="flex flex-row flex-between flex-middle">
+              <div>
+                Home
               </div>
+              <i class="material-icons">home</i>
             </a>
           </li>
           {{#each feeders}}
             <li class="{{#if feederIsSelected sn}}selected{{/if}}">
-              <a href="/feeder/{{sn}}">{{name}}</a>
+              <a href="/feeder/{{sn}}" class="flex flex-row flex-between flex-middle">
+                <div>{{name}}</div>
+                {{#if online}}
+                  <i class="material-icons grey-text text-darken-1" data-tooltip="Feeder is Online" data-tooltip-direction="s">signal_wifi_4_bar</i>
+                {{else}}
+                  <i class="material-icons grey-text text-lighten-1" data-tooltip="Feeder is Offline" data-tooltip-direction="s">signal_wifi_off</i>
+                {{/if}}
+              </a>
             </li>
           {{/each}}
         </ul>

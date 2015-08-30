@@ -1,0 +1,1 @@
+@Spark = Meteor.npmRequire 'spark'

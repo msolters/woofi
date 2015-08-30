@@ -31,8 +31,17 @@ Meteor.methods
         success: true
         msg: "Feeder successfully created!"
       }
-    catch e
+    catch error
       return {
         success: false
-        msg: "Sorry, an error occurred: #{e}"
+        msg: "Sorry, an error occurred while creating the Feeder: #{error}"
+      }
+
+  deleteFeeder: ( _sn ) ->
+    try
+
+    catch error
+      return {
+        success: false
+        msg: "Sorry, an error occurred while deleting the Feeder: #{error}"
       }

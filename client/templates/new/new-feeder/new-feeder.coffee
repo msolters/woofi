@@ -10,5 +10,7 @@ Template.newFeeder.events
       sn: template.find('input#new-feeder-sn').value.toLowerCase()
     Meteor.call 'createFeeder', _feeder, (err, resp) ->
       handleMethodResponse err, resp
-      AntiModals.dismissOverlay template.firstNode if resp.success
+      if resp.success
+        AntiModals.dismissOverlay template.firstNode
+        FlowRouter.redirect "/feeder/#{_feeder.sn}"
     return false
