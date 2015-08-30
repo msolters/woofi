@@ -1,5 +1,9 @@
 .side-nav ul li {
-  transition: box-shadow 0.2s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+.side-nav ul li:hover {
+  z-index: 2;
 }
 .side-nav a[data-sign-out],
 .side-nav a[data-sign-in] {

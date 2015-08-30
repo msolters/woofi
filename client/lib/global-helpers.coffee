@@ -22,3 +22,9 @@ Template.registerHelper 'routeContext', ->
 
 Template.registerHelper 'convertRSSItoPercent', (dBm) ->
   Math.min( Math.max(2 * (dBm + 100), 0), 100)
+
+Template.registerHelper 'getNamePart', (part=0) ->
+  getNamePart part
+
+Template.registerHelper 'myFeeders', ->
+  Feeders.find().fetch()

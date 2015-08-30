@@ -19,11 +19,11 @@
                 </a>
               </li>
               {{#each feeders}}
-                <li class="{{#if feederIsSelected sn}}selected{{/if}} hoverable">
-                  <a href="/feeder/{{sn}}" class="flex flex-row flex-between flex-middle">
+                <li class="teal {{#if feederIsSelected sn}}darken-2{{/if}} hoverable">
+                  <a href="/feeder/{{sn}}" class="flex flex-row flex-between flex-middle white-text">
                     <div>{{name}}</div>
                     {{#if online}}
-                      <i class="material-icons grey-text text-darken-1" data-tooltip="Feeder is Online" data-tooltip-direction="s">signal_wifi_4_bar</i>
+                      <i class="material-icons white-text" data-tooltip="Feeder is Online" data-tooltip-direction="s">signal_wifi_4_bar</i>
                     {{else}}
                       <i class="material-icons grey-text text-lighten-1" data-tooltip="Feeder is Offline" data-tooltip-direction="s">signal_wifi_off</i>
                     {{/if}}
