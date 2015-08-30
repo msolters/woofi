@@ -1,0 +1,113 @@
+<template name="WiFiSetup">
+  <div class="anti-modal-box">
+    <div class="anti-modal-body">
+      <div class="anti-modal-title">WiFi Feeder Setup Tool</div>
+      {{#if connectionStepIs 'connectToFeeder'}}
+        <div>
+          <ul>
+            <li>
+              Make sure your Vet Innovations Pet Feeder is in WiFi setup mode (it will be blinking blue).
+            </li>
+            <li>
+              Next, check your computer's wireless for a network starting with "Pet Feeder", and connect to it.
+            </li>
+          </ul>
+          When you're done, click next.
+        </div>
+        <div class="anti-modal-footer">
+          <button id="cancel" type="button" class="waves-effect waves-light btn grey">Cancel</button>
+          <button data-locate-feeder class="waves-effect waves-light btn blue">
+            {{#if locatingFeeder}}
+              <i class="fa fa-fw fa-spinner fa-spin"></i>Connecting to Feeder...
+            {{else}}
+              <i class="material-icons right">keyboard_arrow_right</i>Next
+            {{/if}}
+          </button>
+        </div>
+      {{else}}
+        {{#if connectionStepIs 'chooseSSID'}}
+          <div id="ssid-table">
+            <div id="ssid-table-header" class="flex flex-row flex-between">
+              <div id="ssid-table-header-status">
+                {{#if scanningAPs}}
+                  Please wait...
+                {{else}}
+                  {{aps.length}} WiFi Networks Found
+                {{/if}}
+              </div>
+              <div>
+                {{#if scanningAPs}}
+                  <button data-scan-aps class="waves-effect waves-light btn grey">
+                    <i class="fa fa-fw fa-spinner fa-spin"></i>Scanning APs...
+                  </button>
+                {{else}}
+                  <button data-scan-aps class="waves-effect waves-light btn blue">
+                    Re-scan APs
+                  </button>
+                {{/if}}
+              </div>
+            </div>
+            {{#each aps}}
+              {{#if isSelectedAP this}}
+                <form id="connect-to-ssid">
+                  <div class="feeder-ssid-option flex flex-row flex-between hover-grey z-depth-1">
+                    <div>
+                      {{#if sec}}
+                        <input id="ssid-pw" type="password" placeholder="WiFi Password" autofocus="true"/>
+                      {{else}}
+                        {{ssid}}
+                      {{/if}}
+                    </div>
+                    <div class="flex flex-row">
+                      <button type="submit" class="waves-effect waves-light btn blue">Connect  <i class="fa fa-fw fa-chevron-right"></i></button>
+                    </div>
+                  </div>
+                </form>
+              {{else}}
+                <div class="feeder-ssid-option flex flex-row flex-between hover-grey">
+                  <div class="flex flex-row flex-middle">
+                    <div>
+                      {{ssid}}
+                    </div>
+                    {{#if sec}}
+                      <i class="ssid-security-icon material-icons">lock_outline</i>
+                    {{/if}}
+                  </div>
+                  <div class="dark-grey">
+                    ({{convertRSSItoPercent rssi}}%)
+                  </div>
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+
+          <div class="anti-modal-footer">
+            <button id="cancel" type="button" class="waves-effect waves-light btn grey">Cancel</button>
+          </div>
+        {{else}}
+          {{#if connectionStepIs 'pendingConnection'}}
+            <div>
+              The WiFi information has been sent to the Feeder.
+            </div>
+            <div>
+              <ul>
+                <li>
+                  The LED should now turn green, and eventually blue.
+                </li>
+                <li>
+                  If the LED continues to flash green for a minute or more, it means the password was entered incorrectly.  You can use the button below to restart the process.
+                </li>
+              </ul>
+            </div>
+            <div class="anti-modal-footer">
+              <button data-restart-wifi-wizard class="waves-effect waves-light btn blue">
+                Start Over
+              </button>
+              <button id="cancel" type="button" class="waves-effect waves-light btn green">Done</button>
+            </div>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</template>
