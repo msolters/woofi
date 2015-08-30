@@ -1,4 +1,15 @@
 ###
+#     Template.feederConsole
+###
+Template.feederConsole.created = ->
+  @autorun =>
+    feeder_q =
+      sn: FlowRouter.getParam 'sn'
+    if !Feeders.findOne feeder_q
+      FlowRouter.redirect '/'
+
+
+###
 #     Tempate.deleteFeeder
 ###
 Template.deleteFeeder.events

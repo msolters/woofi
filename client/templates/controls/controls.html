@@ -1,4 +1,10 @@
 <template name="controls">
+  {{#if routeIs 'Home'}}
+    {{> homeControls }}
+  {{/if}}
+  {{#if routeIs 'Feeder Console'}}
+    {{> feederConsoleControls }}
+  {{/if}}
 </template>
 
 <template name="homeControls">
