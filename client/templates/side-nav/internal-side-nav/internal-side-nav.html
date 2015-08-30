@@ -10,7 +10,7 @@
         <div id="slide-out" class="side-nav fixed flex flex-column flex-between teal z-depth-2">
           <div>
             <ul>
-              <li class="teal {{#if routeIs 'Home'}}darken-2{{/if}}">
+              <li class="teal {{#if routeIs 'Home'}}darken-2{{/if}} hoverable">
                 <a href="/home" class="flex flex-row flex-between flex-middle white-text">
                   <div>
                     Home
@@ -19,7 +19,7 @@
                 </a>
               </li>
               {{#each feeders}}
-                <li class="{{#if feederIsSelected sn}}selected{{/if}}">
+                <li class="{{#if feederIsSelected sn}}selected{{/if}} hoverable">
                   <a href="/feeder/{{sn}}" class="flex flex-row flex-between flex-middle">
                     <div>{{name}}</div>
                     {{#if online}}

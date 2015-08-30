@@ -10,25 +10,13 @@
         <div id="slide-out" class="side-nav fixed flex flex-column flex-between teal">
           <div>
             <ul>
-              <li class="teal {{#if routeIs 'Welcome'}}darken-2{{/if}}">
+              <li class="teal {{#if routeIs 'Welcome'}}darken-2{{/if}} hoverable">
                 <a href="/" class="flex flex-row flex-between flex-middle white-text">
                   <div>
                     Pro-Portion Pet Feeder
                   </div>
                 </a>
               </li>
-              {{#each feeders}}
-                <li class="{{#if feederIsSelected sn}}selected{{/if}}">
-                  <a href="/feeder/{{sn}}" class="flex flex-row flex-between flex-middle">
-                    <div>{{name}}</div>
-                    {{#if online}}
-                      <i class="material-icons grey-text text-darken-1" data-tooltip="Feeder is Online" data-tooltip-direction="s">signal_wifi_4_bar</i>
-                    {{else}}
-                      <i class="material-icons grey-text text-lighten-1" data-tooltip="Feeder is Offline" data-tooltip-direction="s">signal_wifi_off</i>
-                    {{/if}}
-                  </a>
-                </li>
-              {{/each}}
             </ul>
           </div>
         </div>
