@@ -6,6 +6,30 @@ body,
 #container {
   padding-top: 20px;
 }
+header, main, footer {
+  padding-left: 240px;
+}
+nav {
+  max-width: calc(~"100% - 240px");
+}
+nav .button-collapse {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+nav .brand-logo {
+  padding-left: 20px;
+}
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+  nav {
+    max-width: 100%;
+  }
+  nav .brand-logo {
+    padding-left: 0;
+  }
+}
 
 /*  Flex Classes  */
 /*  ======================================================================= */
@@ -84,4 +108,15 @@ body,
   font-size: 20px;
   margin: 0;
   padding: 1.46rem 0 1.168rem 0;
+}
+.at-input > span {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+/*  Inputs */
+/*  ======================================================================= */
+.input-field label {
+  left: 0;
 }

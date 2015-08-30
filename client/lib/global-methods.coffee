@@ -1,7 +1,8 @@
 @getNamePart = (part=0) ->
-  return unless Meteor.userId()
-  nameParts = Meteor.user().profile.name.split ' '
-  return nameParts[part]
+  try
+    return unless Meteor.userId()
+    nameParts = Meteor.user().profile.name.split ' '
+    nameParts[part]
 
 @handleMethodResponse = (err, resp, successMsg=null, errorMsg=null) ->
   if err?
