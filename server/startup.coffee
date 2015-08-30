@@ -9,4 +9,6 @@ Meteor.startup ->
     sn_q =
       sn: _sn
     if !SerialNumbers.findOne( sn_q )
-      SerialNumbers.insert sn_q
+      SerialNumbers.insert
+      sn: _sn
+      registered: false

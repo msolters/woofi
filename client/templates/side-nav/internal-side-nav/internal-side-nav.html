@@ -16,8 +16,8 @@
             </a>
           </li>
           {{#each feeders}}
-            <li class="{{#if feederIsSelected feeder_id}}selected{{/if}}">
-              <a href="/feeder/{{feeder_id}}">{{name}}</a>
+            <li class="{{#if feederIsSelected sn}}selected{{/if}}">
+              <a href="/feeder/{{sn}}">{{name}}</a>
             </li>
           {{/each}}
         </ul>

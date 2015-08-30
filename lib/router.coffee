@@ -15,7 +15,7 @@ FlowRouter.route '/home',
       main: 'home'
       nav: 'internalSideNav'
 
-FlowRouter.route '/feeder/:feeder_id',
+FlowRouter.route '/feeder/:sn',
   name: "Feeder Console"
   triggersEnter: [AccountsTemplates.ensureSignedIn]
   subscriptions: (params, qParams) ->

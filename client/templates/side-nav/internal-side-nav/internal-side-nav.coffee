@@ -16,15 +16,15 @@ Template.internalSideNav.helpers
     switch _routeName
       when "Feeder Console"
         feeder_q =
-          feeder_id: FlowRouter.getParam 'feeder_id'
+          sn: FlowRouter.getParam 'sn'
         feeder = Feeders.findOne feeder_q
         feeder.name if feeder?
       else
         _routeName
-  feederIsSelected: (_feeder_id) ->
+  feederIsSelected: (_sn) ->
     if FlowRouter.getRouteName() is "Feeder Console"
-      feeder_id = FlowRouter.getParam 'feeder_id'
-      if feeder_id is _feeder_id
+      sn = FlowRouter.getParam 'sn'
+      if sn is _sn
         return true
     return false
 
