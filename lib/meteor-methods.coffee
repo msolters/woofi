@@ -5,15 +5,23 @@ Meteor.methods
       # (1) Make sure the serial number of the feeder
       #     is valid and not yet registered.
       #
-      registeredSN_q =
+      sn_q =
         sn: _feeder.sn
-      _sn = SerialNumbers.findOne(registeredSN_q)
+      _sn = SerialNumbers.findOne( sn_q )
       if _sn?
         if _sn.registered
           return {
             success: false
             msg: "Sorry, this Feeder has already been registered."
           }
+        else
+          #
+          # Otherwise, update SN to be registered.
+          #
+          sn_update =
+            $set:
+              registered: true
+          SerialNumbers.update sn_q, sn_update
       else
         return {
           success: false
@@ -39,11 +47,23 @@ Meteor.methods
 
   deleteFeeder: ( _sn ) ->
     try
+      #
+      # (1) Delete Feeder from DB.
+      #
       feeder_q =
         owner: Meteor.userId()
         sn: _sn
       removeFeeder = Feeders.remove feeder_q
       if removeFeeder
+        #
+        # (2) Unregister associated serial number.
+        #
+        sn_q =
+          sn: _sn
+        sn_update =
+          $set:
+            registered: false
+        SerialNumbers.update sn_q, sn_update
         return {
           success: true
           msg: "Feeder successfully removed."

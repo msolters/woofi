@@ -12,8 +12,8 @@ Meteor.startup ->
       sn: _sn
     if !SerialNumbers.findOne( sn_q )
       SerialNumbers.insert
-      sn: _sn
-      registered: false
+        sn: _sn
+        registered: false
 
   #
   # (2) Login to Spark
