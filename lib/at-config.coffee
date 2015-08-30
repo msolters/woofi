@@ -12,7 +12,7 @@ AccountsTemplates.configure
   overrideLoginErrors: true
   sendVerificationEmail: false
   lowercaseUsername: false
-  focusFirstInput: true
+  focusFirstInput: false
 
   # Appearance
   showAddRemoveServices: false
@@ -20,6 +20,8 @@ AccountsTemplates.configure
   showLabels: true
   showPlaceholders: true
   showResendVerificationEmailLink: false
+  hideSignInLink: true
+  hideSignUpLink: true
 
   # Client-side Validation
   continuousValidation: true
@@ -42,23 +44,23 @@ AccountsTemplates.configure
   # Hooks
   onLogoutHook: (err, state) ->
     throw err if err
-    Materialize.toast "Bye!", 5000
+    Materialize.toast "Bye!", 5000, "green"
     $('#sidenav-overlay').remove()
     FlowRouter.go "Welcome"
   onSubmitHook: (err, state) ->
     throw err if err
     switch state
       when 'signIn'
-        Materialize.toast "Welcome back #{getNamePart(0)}!", 5000
+        Materialize.toast "Welcome back #{getNamePart(0)}!", 5000, "green"
       when 'signUp'
-        Materialize.toast "Welcome, #{getNamePart(0)}!", 5000
+        Materialize.toast "Welcome, #{getNamePart(0)}!", 5000, "green"
     FlowRouter.redirect '/home'
   #preSignUpHook: myPreSubmitFunc,
 
   # Texts
   texts:
     button:
-      signUp: "Register Now!"
+      signUp: "Register"
     socialSignUp: "Register"
     socialIcons:
       "meteor-developer": "fa fa-rocket"
@@ -88,6 +90,20 @@ AccountsTemplates.addField pwd
 AccountsTemplates.configureRoute 'changePwd'
 #AccountsTemplates.configureRoute 'forgotPwd'
 AccountsTemplates.configureRoute 'resetPwd'
-AccountsTemplates.configureRoute 'signIn'
-AccountsTemplates.configureRoute 'signUp'
+AccountsTemplates.configureRoute 'signIn',
+  name: 'Sign In'
+  path: '/login'
+  template: 'signIn'
+  layoutTemplate: 'mainLayout'
+  layoutRegions:
+    nav: 'externalSideNav'
+  contentRegion: 'main'
+AccountsTemplates.configureRoute 'signUp',
+  name: 'Sign Up'
+  path: '/register'
+  template: 'signUp'
+  layoutTemplate: 'mainLayout'
+  layoutRegions:
+    nav: 'externalSideNav'
+  contentRegion: 'main'
 AccountsTemplates.configureRoute 'verifyEmail'
