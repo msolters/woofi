@@ -1,13 +1,19 @@
 .side-nav ul li {
   position: relative;
   z-index: 1;
+  cursor: pointer;
+  height: 56px;
 }
 .side-nav ul li:hover {
   z-index: 2;
 }
-.side-nav a[data-sign-out],
-.side-nav a[data-sign-in] {
-  border-radius: 0;
+@media screen and (min-width: 600px) {
+  .side-nav ul li {
+    height: 64px;
+  }
+}
+.side-nav ul li a {
+  height: 100%;
 }
 
 #turnkey-button {
