@@ -5,7 +5,25 @@
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <a href="#" class="brand-logo">{{routeContext}}</a>
         <div id="turnkey-button" class="full-height valign-wrapper">
-          <a data-sign-out class="waves-effect waves-light btn teal darken-2 white-text z-depth-2">Sign Out</a>
+          <a data-activates='turnkey-dropdown' class="dropdown-button btn teal darken-2 white-text z-depth-2">
+            <div class="flex flex-row flex-between flex-middle full-height">
+              <i class="material-icons">person</i>
+              <div id="turnkey-button-text">{{currentUser.profile.name}}</div>
+              <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+          </a>
+          <ul id='turnkey-dropdown' class='dropdown-content'>
+            <li>
+              <a data-edit-profile href="#!">
+                <i class="material-icons left">settings</i>Edit Profile
+              </a>
+            </li>
+            <li>
+              <a data-sign-out href="#!">
+                <i class="material-icons left">exit_to_app</i>Sign Out
+              </a>
+            </li>
+          </ul>
         </div>
         <div id="slide-out" class="side-nav fixed flex flex-column flex-between teal z-depth-2">
           <div>

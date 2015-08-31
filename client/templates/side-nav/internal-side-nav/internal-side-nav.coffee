@@ -7,6 +7,9 @@ Template.internalSideNav.created = ->
 Template.internalSideNav.rendered = ->
   @sideNavTrigger = $ @find '.button-collapse'
     .sideNav()
+  $ @find '.dropdown-button'
+    .dropdown
+      constrain_width: false
 
 Template.internalSideNav.helpers
   feeders: ->
