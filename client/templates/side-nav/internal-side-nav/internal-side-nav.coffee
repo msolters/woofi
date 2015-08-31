@@ -26,3 +26,5 @@ Template.internalSideNav.events
     $('.button-collapse').sideNav 'hide'
   'click a[data-sign-out]': ->
     AccountsTemplates.logout()
+  'click a[data-edit-profile]': ->
+    AntiModals.overlay 'editProfile'
