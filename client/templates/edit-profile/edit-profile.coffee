@@ -6,5 +6,10 @@ Template.editProfile.rendered = ->
 
 Template.editProfile.events
   'submit form#edit-profile': (event, template) ->
-
+    _user =
+      'profile.name': template.find('input#edit-profile-name').value
+    Meteor.call 'updateUser', _user, (err, resp) =>
+      handleMethodResponse err, resp
+      if resp.success
+        AntiModals.dismissOverlay template.firstNode
     return false

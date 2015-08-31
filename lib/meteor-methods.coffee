@@ -78,3 +78,38 @@ Meteor.methods
         success: false
         msg: "Sorry, an error occurred while deleting the Feeder: #{error}"
       }
+
+  updateUser: (_user) ->
+    try
+      user_update = {}
+      for k, v of _user
+        switch k
+          #
+          # (1) Ensure the user has a name.
+          #
+          when 'profile.name'
+            if v.length
+              user_update[k] = v
+            else
+              return {
+                success: false
+                msg: "Please enter a valid profile name!"
+              }
+      user_q =
+        _id: Meteor.userId()
+      userUpdate = Meteor.users.update user_q, { $set: user_update }
+      if userUpdate
+        return {
+          success: true
+          msg: "User profile successfully updated!"
+        }
+      else
+        return {
+          success: false
+          msg: "User profile could not be updated.  Please try again."
+        }
+    catch error
+      return {
+        success: false
+        msg: "Sorry, an error occurred while updating user profile: #{error}"
+      }
