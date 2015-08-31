@@ -10,6 +10,8 @@ Template.internalSideNav.rendered = ->
   $ @find '.dropdown-button'
     .dropdown
       constrain_width: false
+      alignment: 'right'
+      belowOrigin: true
 
 Template.internalSideNav.helpers
   feeders: ->
