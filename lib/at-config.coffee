@@ -9,7 +9,7 @@ AccountsTemplates.configure
   confirmPassword: true
   enablePasswordChange: true
   forbidClientAccountCreation: false
-  overrideLoginErrors: true
+  overrideLoginErrors: false
   sendVerificationEmail: false
   lowercaseUsername: false
   focusFirstInput: false
