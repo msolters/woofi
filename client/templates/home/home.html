@@ -1,0 +1,20 @@
+<template name="home">
+
+  <div id="container" class="container">
+    <p class="grey-text text-darken-2">
+      <h3 class="thin-text">
+        Hey {{getNamePart 0}}!
+      </h3>
+      <h4>
+        {{#if myFeeders.length}}
+          You have {{myFeeders.length}} Feeders set up.
+        {{else}}
+          Use the <a data-add-new-feeder class="btn-floating btn-large blue" data-tooltip="Add New Feeder" data-tooltip-direction="s">
+            <i class="large material-icons">add</i>
+          </a> button to create your first Feeder.
+        {{/if}}
+      </h4>
+    </p>
+  </div>
+
+</template>

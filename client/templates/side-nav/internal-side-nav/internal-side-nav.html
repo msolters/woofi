@@ -1,0 +1,73 @@
+<template name="internalSideNav">
+  <div class="navbar-fixed">
+    <nav class="teal">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        <a href="#" class="brand-logo">{{routeContext}}</a>
+        <div id="turnkey-button" class="full-height valign-wrapper hide-on-small-only">
+          <a data-activates='turnkey-dropdown' class="dropdown-button btn teal darken-2 white-text z-depth-2">
+            <div class="flex flex-row flex-between flex-middle full-height">
+              <i class="material-icons">account_circle</i>
+              <div id="turnkey-button-text">{{currentUser.profile.name}}</div>
+              <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+          </a>
+          <ul id='turnkey-dropdown' class='dropdown-content'>
+            <li>
+              <a data-edit-profile>
+                <i class="material-icons left">settings</i>Edit Profile
+              </a>
+            </li>
+            <li>
+              <a data-sign-out>
+                <i class="material-icons left">exit_to_app</i>Sign Out
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="slide-out" class="side-nav fixed flex flex-column flex-between teal lighten-1 z-depth-2">
+          <div>
+            <ul>
+              <li class="teal {{#if routeIs 'Home'}}darken-2{{/if}} hoverable">
+                <a href="/home" class="flex flex-row flex-between flex-middle white-text">
+                  <div>
+                    Home
+                  </div>
+                  <i class="material-icons">home</i>
+                </a>
+              </li>
+              {{#each feeders}}
+                <li class="teal {{#if feederIsSelected sn}}darken-2{{/if}} hoverable">
+                  <a href="/feeder/{{sn}}" class="flex flex-row flex-between flex-middle white-text">
+                    <div>{{name}}</div>
+                    {{#if online}}
+                      <i class="material-icons white-text" data-tooltip="Feeder is Online" data-tooltip-direction="s">signal_wifi_4_bar</i>
+                    {{else}}
+                      <i class="material-icons grey-text text-lighten-1" data-tooltip="Feeder is Offline" data-tooltip-direction="s">signal_wifi_off</i>
+                    {{/if}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="hide-on-med-and-up">
+            <ul>
+              <li class="teal hoverable">
+                <a data-edit-profile class="flex flex-row flex-between flex-middle white-text">
+                  <div>Edit Profile</div>
+                  <i class="material-icons">settings</i>
+                </a>
+              </li>
+              <li class="teal hoverable">
+                <a data-sign-out class="flex flex-row flex-between flex-middle white-text">
+                  <div>Sign Out</div>
+                  <i class="material-icons">exit_to_app</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</template>

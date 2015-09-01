@@ -1,0 +1,35 @@
+.side-nav ul li {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  height: 56px;
+}
+.side-nav ul li:hover {
+  z-index: 2;
+}
+@media screen and (min-width: 600px) {
+  .side-nav ul li {
+    height: 64px;
+  }
+}
+.side-nav ul li a {
+  height: 100%;
+}
+
+#turnkey-button {
+  padding-right: 20px;
+  position: absolute;
+  right: 0;
+}
+#turnkey-button > a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#turnkey-button > a i {
+  height: 100%;
+  line-height: inherit;
+}
+#turnkey-button-text {
+  margin: 0 10px 0 10px;
+  text-transform: none;
+}

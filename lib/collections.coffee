@@ -1,2 +1,2 @@
-@Feeders = new Meteor.Collection 'Feeders' # Pet Feeder Collection
-@Pets = new Meteor.Collection 'Pets'  # Pet Collection
+@Feeders = new Mongo.Collection 'Feeders'
+@SerialNumbers = new Mongo.Collection 'SerialNumbers'

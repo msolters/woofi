@@ -1,0 +1,45 @@
+<template name="controls">
+  {{#if routeIs 'Home'}}
+    {{> homeControls }}
+  {{/if}}
+  {{#if routeIs 'Feeder Console'}}
+    {{> feederConsoleControls }}
+  {{/if}}
+</template>
+
+<template name="homeControls">
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a data-add-new-feeder class="btn-floating btn-large blue" data-tooltip="Add New Feeder" data-tooltip-direction="w">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      <!--<li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>-->
+      <li>
+        <a data-wifi-setup class="btn-floating green" data-tooltip="WiFi Setup Tool" data-tooltip-direction="w">
+          <i class="material-icons">wifi_tethering</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<template name="feederConsoleControls">
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a data-add-new-feeder class="btn-floating btn-large blue" data-tooltip="Add New Feeder" data-tooltip-direction="w">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      <li>
+        <a data-delete-feeder class="btn-floating red" data-tooltip="Delete this Feeder" data-tooltip-direction="w">
+          <i class="material-icons">delete</i>
+        </a>
+      </li>
+      <li>
+        <a data-wifi-setup class="btn-floating green" data-tooltip="WiFi Setup Tool" data-tooltip-direction="w">
+          <i class="material-icons">wifi_tethering</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>

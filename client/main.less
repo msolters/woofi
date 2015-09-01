@@ -1,0 +1,146 @@
+html,
+body,
+.full-height {
+  height: 100%;
+}
+#container {
+  padding-top: 20px;
+}
+header, main, footer {
+  padding-left: 240px;
+}
+nav {
+  max-width: calc(~"100% - 240px");
+}
+nav .button-collapse {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+nav .brand-logo {
+  padding-left: 20px;
+}
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+  nav {
+    max-width: 100%;
+  }
+  nav .brand-logo {
+    padding-left: 0;
+  }
+}
+
+/*  Flex Classes  */
+/*  ======================================================================= */
+.flex {
+  display: flex !important;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-between {
+  align-content: space-between;
+  justify-content: space-between;
+}
+.flex-center {
+  align-content: center;
+  justify-content: center;
+}
+.flex-middle {
+  align-items: center;
+}
+
+/*  AntiModal Overrides */
+/*  ======================================================================= */
+.anti-modal-overlay {
+  background-color: rgba(0,0,0,0.15);
+}
+.anti-modal-overlay .anti-modal-box {
+  max-width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media screen and (max-width: 600px) {
+  .anti-modal-overlay .anti-modal-box {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  .anti-modal-body {
+    border-radius: 0;
+  }
+  .anti-modal-footer {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+  }
+}
+.anti-modal-title {
+  font-size: 20px;
+  padding: 0;
+}
+.anti-modal-body {
+  background-color: #fff;
+  height: 100%;
+  border-radius: 5px;
+}
+.anti-modal-footer {
+  background: transparent;
+  padding: 0;
+  margin-top: 10px;
+}
+
+
+/*  Tooltips  */
+/*  ======================================================================= */
+.tooltip.show {
+  background-color: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
+
+/*  Toast   */
+/*  ======================================================================= */
+#toast-container {
+  z-index: 65537;
+}
+
+
+/*  User Accounts */
+/*  ======================================================================= */
+.at-title .header {
+  font-size: 20px;
+  margin: 0;
+  padding: 1.46rem 0 1.168rem 0;
+}
+.at-input > span {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+.at-error.card-panel {
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.at-btn.submit {
+  height: auto;
+  padding: 10px;
+}
+
+/*  Inputs */
+/*  ======================================================================= */
+.input-field label {
+  left: 0;
+  pointer-events: none;
+}

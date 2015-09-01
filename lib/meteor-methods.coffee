@@ -1,132 +1,115 @@
 Meteor.methods
-  #################################################################
-  #           CREATE
-  #################################################################
-  ###
-  #   Validate and create a new WooFi user account
-  ###
-  createNewUser: (_user) ->
-    # (1) validate name
-    if _user.name.length is 0
-      return {
-        success: false
-        msg: "Please provide your full name!"
-      }
-    # (2) validate e-mail
-    if !validateEmail.test _user.email
-      return {
-        success: false
-        msg: "Please provide a valid e-mail!"
-      }
-    # (3) validate passwords
-    if _user.password.length < 6
-      return {
-        success: false
-        msg: "Your password must be 6 characters or more."
-      }
-    else
-      if _user.password isnt _user.password_confirm
+  createFeeder: ( _feeder ) ->
+    try
+      #
+      # (1) Make sure the serial number of the feeder
+      #     is valid and not yet registered.
+      #
+      sn_q =
+        sn: _feeder.sn
+      _sn = SerialNumbers.findOne( sn_q )
+      if _sn?
+        if _sn.registered
+          return {
+            success: false
+            msg: "Sorry, this Feeder has already been registered."
+          }
+        else
+          #
+          # Otherwise, update SN to be registered.
+          #
+          sn_update =
+            $set:
+              registered: true
+          SerialNumbers.update sn_q, sn_update
+      else
         return {
           success: false
-          msg: "Please make sure your passwords match!"
+          msg: "Sorry, that's not a recognized serial number."
         }
-    # (4) Finally, if we've gotten this far, let's make a user:
-    Accounts.createUser
-      email: _user.email
-      password: _user.password
-      profile:
-        name: _user.name
-        units:
-          mass: "kg" # pounds is default unit of mass
-    return {
-      success: true
-      msg: "Nice work, bone daddy!  Welcome aboard!"
-    }
-  createNewPet: (_pet) ->
-    # (1) Validate pet name
-    if _pet.name.length is 0
+      #
+      # (2) Apply ownership to the feeder object.
+      #
+      _feeder.owner = Meteor.userId()
+      #
+      # (3) Insert the Feeder to the DB.
+      #
+      Feeders.insert _feeder
+      return {
+        success: true
+        msg: "Feeder successfully created!"
+      }
+    catch error
       return {
         success: false
-        msg: "Please enter your pet's name."
+        msg: "Sorry, an error occurred while creating the Feeder: #{error}"
       }
-    # (2) Validate pet type
-    #if _pet.type
-    _pet.owner = Meteor.userId()
-    petID = Pets.insert(_pet)
-    return {
-      success: true
-      msg: "Woohoo! #{_pet.name} has been added to the WooFi system :)"
-      petID: petID
-    }
 
-  #################################################################
-  #           END CREATE
-  #################################################################
+  deleteFeeder: ( _sn ) ->
+    try
+      #
+      # (1) Delete Feeder from DB.
+      #
+      feeder_q =
+        owner: Meteor.userId()
+        sn: _sn
+      removeFeeder = Feeders.remove feeder_q
+      if removeFeeder
+        #
+        # (2) Unregister associated serial number.
+        #
+        sn_q =
+          sn: _sn
+        sn_update =
+          $set:
+            registered: false
+        SerialNumbers.update sn_q, sn_update
+        return {
+          success: true
+          msg: "Feeder successfully removed."
+        }
+      else
+        return {
+          success: false
+          msg: "You have insufficient privileges to remove this Feeder."
+        }
+    catch error
+      return {
+        success: false
+        msg: "Sorry, an error occurred while deleting the Feeder: #{error}"
+      }
 
-  #################################################################
-  #           READ
-  #################################################################
-  #################################################################
-  #           END READ
-  #################################################################
-
-  #################################################################
-  #           UPDATE
-  #################################################################
-  #   Update currently logged-in user by merging given _user object
   updateUser: (_user) ->
-    _q =
-      _id: Meteor.userId()
     try
-      Meteor.users.update(_q, {$set: _user})
-      return {
-        success: true
-        msg: "Your changes have been saved successfully."
-      }
-    catch e
+      user_update = {}
+      for k, v of _user
+        switch k
+          #
+          # (1) Ensure the user has a name.
+          #
+          when 'profile.name'
+            if v.length
+              user_update[k] = v
+            else
+              return {
+                success: false
+                msg: "Please enter a valid profile name!"
+              }
+      user_q =
+        _id: Meteor.userId()
+      userUpdate = Meteor.users.update user_q, { $set: user_update }
+      if userUpdate
+        return {
+          success: true
+          msg: "User profile successfully updated!"
+        }
+      else
+        return {
+          success: false
+          msg: "User profile could not be updated.  Please try again."
+        }
+    catch error
       return {
         success: false
-        msg: "Sorry, those changes could not be applied.  Why don't you give it another shot?"
+        msg: "Sorry, an error occurred while updating user profile: #{error}"
       }
-  #   Update pet record, by merging given _pet object by _pet._id
-  updatePet: (_pet) ->
-    _pet.owner = Meteor.userId()
-    _q =
-      _id: _pet._id
-    delete _pet["_id"]
-    try
-      Pets.update(_q, {$set: _pet})
-      return {
-        success: true
-        msg: "Your changes have been saved successfully."
-      }
-    catch e
-      return {
-        success: false
-        msg: "Sorry, those changes could not be applied.  Why don't you give it another shot?"
-      }
-  #################################################################
-  #           END UPDATE
-  #################################################################
-
-  #################################################################
-  #           DELETE
-  #################################################################
-  deletePet: (petID) ->
-    _q =
-      _id: petID
-      owner: Meteor.userId()
-    try
-      Pets.remove(_q)
-      return {
-        success: true
-        msg: "Pet removed successfully."
-      }
-    catch e
-      return {
-        success: false
-        msg: "Uh oh! We weren't able to carry out that last request.  Please try again."
-      }
-  #################################################################
-  #           END DELETE
-  #################################################################

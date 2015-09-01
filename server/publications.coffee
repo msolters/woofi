@@ -1,6 +1,3 @@
-Meteor.publish "Pets", (slug={}) ->
+Meteor.publish 'Feeders', ( slug={} ) ->
   slug.owner = @userId
-  return Pets.find(slug)
-Meteor.publish "Feeders", (slug={}) ->
-  slug.owner = @userId
-  return Feeders.find(slug)
+  Feeders.find( slug )

@@ -1,0 +1,33 @@
+<template name="externalSideNav">
+  <div class="navbar-fixed">
+    <nav class="teal">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="mdi-navigation-menu"></i>
+        </a>
+        <a href="#" class="brand-logo">{{routeContext}}</a>
+        <div id="turnkey-button" class="full-height valign-wrapper hide-on-small-only">
+          <a data-sign-in class="waves-effect waves-light btn teal darken-2 white-text z-depth-2">Sign In</a>
+        </div>
+        <div id="slide-out" class="side-nav fixed flex flex-column flex-between teal lighten-1">
+          <div>
+            <ul>
+              <li class="teal {{#if routeIs 'Welcome'}}darken-2{{/if}} hoverable">
+                <a href="/" class="flex flex-row flex-between flex-middle white-text">
+                  <div>Pro-Portion Feeder</div>
+                  <i class="material-icons">explore</i>
+                </a>
+              </li>
+              <li class="teal {{#if routeIs 'Sign In'}}darken-2{{/if}} hoverable hide-on-med-and-up">
+                <a data-sign-in class="flex flex-row flex-between flex-middle white-text">
+                  <div>Sign In</div>
+                  <i class="material-icons">vpn_key</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</template>

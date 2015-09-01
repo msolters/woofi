@@ -1,0 +1,38 @@
+<template name="signIn">
+  <div class="parallax-container">
+    <div class="parallax"><img src="imgs/cat-vet.jpg"></div>
+  </div>
+  <div class="section white z-depth-2">
+    <div class="row container">
+      <h2 class="header teal-text">Come On In!</h2>
+      {{> atForm state='signIn' }}
+      <p>
+        Don't have an account? <a href="/register">Register here!</a>
+      </p>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="imgs/wireless-dog-tracker.jpg"></div>
+  </div>
+</template>
+
+<template name="signUp">
+  <div class="parallax-container">
+    <div class="parallax"><img src="imgs/cat-vet.jpg"></div>
+  </div>
+  <div class="section white z-depth-2">
+    <div class="row container">
+      <h2 class="header teal-text">Get Started</h2>
+      <p class="grey-text text-darken-3 lighten-3">
+        To begin using the Pro-Portion Feeder app, just sign up using the form below!
+      </p>
+      {{> atForm state='signUp' }}
+      <p>
+        Already have an account? <a href="/login">Sign in!</a>
+      </p>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="imgs/wireless-dog-tracker.jpg"></div>
+  </div>
+</template>
