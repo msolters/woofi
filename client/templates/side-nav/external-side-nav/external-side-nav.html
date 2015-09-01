@@ -7,7 +7,11 @@
         </a>
         <a href="#" class="brand-logo">{{routeContext}}</a>
         <div id="turnkey-button" class="full-height valign-wrapper hide-on-small-only">
-          <a data-sign-in class="waves-effect waves-light btn teal darken-2 white-text z-depth-2">Sign In</a>
+          {{#if routeIs 'Sign In'}}
+            <a href="/register" class="waves-effect waves-light btn teal darken-2 white-text z-depth-2">Register<i class="material-icons right">person_add</i></a>
+          {{else}}
+            <a href="/login" class="waves-effect waves-light btn teal darken-2 white-text z-depth-2">Sign In<i class="material-icons right">exit_to_app</i></a>
+          {{/if}}
         </div>
         <div id="slide-out" class="side-nav fixed flex flex-column flex-between teal lighten-1">
           <div>
@@ -19,9 +23,15 @@
                 </a>
               </li>
               <li class="teal {{#if routeIs 'Sign In'}}darken-2{{/if}} hoverable hide-on-med-and-up">
-                <a data-sign-in class="flex flex-row flex-between flex-middle white-text">
+                <a href="/login" class="flex flex-row flex-between flex-middle white-text">
                   <div>Sign In</div>
-                  <i class="material-icons">vpn_key</i>
+                  <i class="material-icons">exit_to_app</i>
+                </a>
+              </li>
+              <li class="teal {{#if routeIs 'Sign Up'}}darken-2{{/if}} hoverable hide-on-med-and-up">
+                <a href="/login" class="flex flex-row flex-between flex-middle white-text">
+                  <div>Register</div>
+                  <i class="material-icons">person_add</i>
                 </a>
               </li>
             </ul>

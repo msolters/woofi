@@ -9,7 +9,7 @@ AccountsTemplates.configure
   confirmPassword: true
   enablePasswordChange: true
   forbidClientAccountCreation: false
-  overrideLoginErrors: false
+  overrideLoginErrors: true
   sendVerificationEmail: false
   lowercaseUsername: false
   focusFirstInput: false
@@ -48,7 +48,14 @@ AccountsTemplates.configure
     $('#sidenav-overlay').remove()
     FlowRouter.go "Welcome"
   onSubmitHook: (err, state) ->
-    throw err if err
+    if err
+      switch err.reason
+        when 'error.accounts.Login forbidden'
+          _msg = "Invalid e-mail or password."
+        else
+          _msg = err.reason
+      Materialize.toast _msg, 5500, "red"
+      return
     switch state
       when 'signIn'
         Materialize.toast "Welcome back #{getNamePart(0)}!", 5000, "green"
